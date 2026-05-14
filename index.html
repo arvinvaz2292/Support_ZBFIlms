@@ -15,39 +15,60 @@
 
   <h1>Support ZeroBudget Films</h1>
 
-  <p>Your contribution helps us make more films and pay artists and technicians fairly.</p>
-
   <p>
-    UPI ID copied:<br>
-    <strong>arvin.vaz@federal</strong>
+    Your contribution helps us make more films and pay artists and technicians fairly.
   </p>
 
-  <div style="margin-top:30px; display:flex; flex-direction:column; gap:15px; max-width:300px; margin-left:auto; margin-right:auto;">
+  <p>
+    UPI ID:<br>
+    <strong id="upi">arvin.vaz@federal</strong>
+  </p>
+
+  <button onclick="copyUPI()" style="
+    padding: 15px 25px;
+    border: none;
+    border-radius: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 16px;
+  ">
+    Copy UPI ID
+  </button>
+
+  <p id="copied" style="margin-top:10px;"></p>
+
+  <div style="
+    margin-top:30px;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+    max-width:300px;
+    margin-left:auto;
+    margin-right:auto;
+  ">
 
     <a href="upi://pay?pa=arvin.vaz@federal&pn=Arvin%20Vaz"
-       style="padding:15px; background:white; color:black; text-decoration:none; border-radius:10px;">
+       style="padding:15px;background:white;color:black;text-decoration:none;border-radius:10px;">
       Open Any UPI App
     </a>
 
     <a href="gpay://upi/pay?pa=arvin.vaz@federal&pn=Arvin%20Vaz"
-       style="padding:15px; background:white; color:black; text-decoration:none; border-radius:10px;">
+       style="padding:15px;background:white;color:black;text-decoration:none;border-radius:10px;">
       Google Pay
     </a>
 
     <a href="phonepe://pay?pa=arvin.vaz@federal&pn=Arvin%20Vaz"
-       style="padding:15px; background:white; color:black; text-decoration:none; border-radius:10px;">
+       style="padding:15px;background:white;color:black;text-decoration:none;border-radius:10px;">
       PhonePe
-    </a>
-
-    <a href="paytmmp://pay?pa=arvin.vaz@federal&pn=Arvin%20Vaz"
-       style="padding:15px; background:white; color:black; text-decoration:none; border-radius:10px;">
-      Paytm
     </a>
 
   </div>
 
   <script>
-    navigator.clipboard.writeText("arvin.vaz@federal");
+    function copyUPI() {
+      navigator.clipboard.writeText("arvin.vaz@federal");
+      document.getElementById("copied").innerText = "UPI ID copied!";
+    }
   </script>
 
 </body>
