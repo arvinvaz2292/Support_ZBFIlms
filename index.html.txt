@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Support ZeroBudget Films</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body style="
+  font-family: sans-serif;
+  text-align: center;
+  padding-top: 60px;
+  background: #111;
+  color: white;
+">
+  <h1>Opening UPI App...</h1>
+  <p>Your UPI ID has been copied.</p>
+
+  <script>
+    navigator.clipboard.writeText("arvin.vaz@federal");
+
+    window.location.href =
+      "upi://pay?pa=arvin.vaz@federal&pn=Arvin%20Vaz";
+  </script>
+</body>
+</html>
