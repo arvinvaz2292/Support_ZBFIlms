@@ -3,15 +3,37 @@
 <head>
   <title>Support ZeroBudget Films</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .button {
+      display: block;
+      margin: 15px auto;
+      padding: 15px;
+      width: 260px;
+      background: white;
+      color: black;
+      text-decoration: none;
+      border-radius: 12px;
+      font-size: 16px;
+    }
+
+    .note {
+      margin-top: 20px;
+      line-height: 1.6;
+      color: #ccc;
+    }
+  </style>
 </head>
 
-<body style="
-  font-family: sans-serif;
-  background: #111;
-  color: white;
-  text-align: center;
-  padding: 40px;
-">
+<body>
 
   <h1>Support ZeroBudget Films</h1>
 
@@ -19,56 +41,33 @@
     Your contribution helps us make more films and pay artists and technicians fairly.
   </p>
 
-  <p>
-    UPI ID:<br>
-    <strong id="upi">arvin.vaz@federal</strong>
-  </p>
-
-  <button onclick="copyUPI()" style="
-    padding: 15px 25px;
-    border: none;
-    border-radius: 10px;
-    margin-top: 10px;
-    cursor: pointer;
-    font-size: 16px;
-  ">
-    Copy UPI ID
-  </button>
-
-  <p id="copied" style="margin-top:10px;"></p>
-
-  <div style="
-    margin-top:30px;
-    display:flex;
-    flex-direction:column;
-    gap:15px;
-    max-width:300px;
-    margin-left:auto;
-    margin-right:auto;
-  ">
-
-    <a href="upi://pay?pa=arvin.vaz@federal&pn=Arvin%20Vaz"
-       style="padding:15px;background:white;color:black;text-decoration:none;border-radius:10px;">
-      Open Any UPI App
-    </a>
-
-    <a href="gpay://upi/pay?pa=arvin.vaz@federal&pn=Arvin%20Vaz"
-       style="padding:15px;background:white;color:black;text-decoration:none;border-radius:10px;">
-      Google Pay
-    </a>
-
-    <a href="phonepe://pay?pa=arvin.vaz@federal&pn=Arvin%20Vaz"
-       style="padding:15px;background:white;color:black;text-decoration:none;border-radius:10px;">
-      PhonePe
-    </a>
-
+  <div class="note">
+    <strong>UPI ID copied successfully.</strong><br>
+    Paste it in your preferred UPI app to pay.
   </div>
 
+  <a class="button"
+     href="upi://pay?pa=arvin.vaz@federal&pn=Arvin%20Vaz">
+    Open Any UPI App
+  </a>
+
+  <a class="button"
+     href="https://pay.google.com/">
+    Open Google Pay
+  </a>
+
+  <a class="button"
+     href="https://www.phonepe.com/">
+    Open PhonePe
+  </a>
+
+  <a class="button"
+     href="https://paytm.com/">
+    Open Paytm
+  </a>
+
   <script>
-    function copyUPI() {
-      navigator.clipboard.writeText("arvin.vaz@federal");
-      document.getElementById("copied").innerText = "UPI ID copied!";
-    }
+    navigator.clipboard.writeText("arvin.vaz@federal");
   </script>
 
 </body>
