@@ -54,7 +54,6 @@
       letter-spacing: -2px;
       margin-bottom: 28px;
       line-height: 1;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
     }
 
     .white {
@@ -81,39 +80,75 @@
       color: #b8b8b8;
       font-size: 15px;
       line-height: 1.7;
-      margin-bottom: 30px;
+      margin-bottom: 35px;
+    }
+
+    .step {
+      text-align: left;
+      margin-bottom: 28px;
+    }
+
+    .step-number {
+      color: #ff4a1c;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .step-text {
+      color: #d7d7d7;
+      font-size: 15px;
+      line-height: 1.6;
+      margin-bottom: 14px;
     }
 
     .upi-box {
       background: rgba(255,255,255,0.05);
       border: 1px solid rgba(255,255,255,0.08);
-      padding: 20px;
-      border-radius: 20px;
-      margin-bottom: 20px;
+      padding: 18px;
+      border-radius: 18px;
+      text-align: center;
+      cursor: pointer;
+      transition: 0.25s ease;
     }
 
-    .upi-label {
-      color: #8e8e8e;
-      font-size: 12px;
-      margin-bottom: 10px;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
+    .upi-box:hover {
+      border-color: rgba(255,74,28,0.4);
     }
 
     .upi-id {
       font-size: 22px;
       font-weight: 700;
       color: #ff4a1c;
-      word-break: break-word;
       letter-spacing: -0.5px;
-      cursor: pointer;
     }
 
-    .note {
-      color: #cfcfcf;
+    .copy-status {
+      margin-top: 12px;
       font-size: 14px;
-      line-height: 1.7;
-      margin-bottom: 30px;
+      color: #999;
+      min-height: 22px;
+      transition: 0.3s ease;
+    }
+
+    .copied {
+      color: #4dff9a;
+      transform: scale(1.03);
+      animation: pop 0.4s ease;
+    }
+
+    @keyframes pop {
+      0% {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
     }
 
     .button {
@@ -121,17 +156,23 @@
       width: 100%;
       padding: 18px;
       border-radius: 18px;
-      background: linear-gradient(135deg, #ff5a1f, #ff2f00);
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.08);
       color: white;
       text-decoration: none;
       font-size: 17px;
       font-weight: 700;
-      transition: transform 0.2s ease;
-      box-shadow: 0 12px 35px rgba(255,70,20,0.28);
+      transition: all 0.3s ease;
+      opacity: 0.55;
+      pointer-events: none;
     }
 
-    .button:active {
-      transform: scale(0.98);
+    .button.active {
+      background: linear-gradient(135deg, #ff5a1f, #ff2f00);
+      box-shadow: 0 12px 35px rgba(255,70,20,0.28);
+      opacity: 1;
+      pointer-events: auto;
+      transform: scale(1.02);
     }
 
     .footer {
@@ -162,29 +203,49 @@
       Your contribution helps us make more films and pay artists and technicians fairly.
     </div>
 
-    <div class="upi-box">
+    <!-- STEP 1 -->
 
-      <div class="upi-label">
-        UPI ID
+    <div class="step">
+
+      <div class="step-number">
+        STEP 1
       </div>
 
-      <div
-        class="upi-id"
-        onclick="copyUPI()"
-      >
-        arvin.vaz@federal
+      <div class="step-text">
+        Tap the UPI ID below to copy it.
+      </div>
+
+      <div class="upi-box" onclick="copyUPI()">
+
+        <div class="upi-id">
+          arvin.vaz@federal
+        </div>
+
+      </div>
+
+      <div id="copyStatus" class="copy-status">
+        Waiting to copy...
       </div>
 
     </div>
 
-    <div class="note">
-      <strong id="copyText">Copying UPI ID...</strong><br>
-      Tap below to open your preferred UPI app and paste the ID to pay.
-    </div>
+    <!-- STEP 2 -->
 
-    <a class="button" href="upi://pay">
-      Open Any UPI App
-    </a>
+    <div class="step">
+
+      <div class="step-number">
+        STEP 2
+      </div>
+
+      <div class="step-text">
+        Open your preferred UPI app and paste the copied ID there to pay.
+      </div>
+
+      <a id="upiButton" class="button" href="upi://pay">
+        Open Any UPI App
+      </a>
+
+    </div>
 
     <div class="footer">
       Thank you for supporting independent cinema.
@@ -202,19 +263,23 @@
 
         await navigator.clipboard.writeText(upiID);
 
-        document.getElementById("copyText").innerText =
-          "UPI ID copied successfully.";
+        const status = document.getElementById("copyStatus");
+
+        status.innerText = "✓ UPI ID copied successfully!";
+        status.classList.add("copied");
+
+        document
+          .getElementById("upiButton")
+          .classList.add("active");
 
       } catch (err) {
 
-        document.getElementById("copyText").innerText =
-          "Tap the UPI ID above to copy.";
+        document.getElementById("copyStatus").innerText =
+          "Couldn't copy automatically. Please copy manually.";
 
       }
 
     }
-
-    copyUPI();
 
   </script>
 
