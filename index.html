@@ -189,15 +189,6 @@
       text-align: center;
     }
 
-    #iosMessage {
-      display: none;
-      margin-top: 18px;
-      color: #bdbdbd;
-      font-size: 14px;
-      line-height: 1.6;
-      text-align: center;
-    }
-
   </style>
 </head>
 
@@ -253,7 +244,9 @@
         STEP 2
       </div>
 
-      <div class="step-text">
+      <!-- Android Message -->
+
+      <div id="androidText" class="step-text">
         Open your preferred UPI app and paste the copied ID there to pay.
       </div>
 
@@ -261,8 +254,12 @@
         Open Any UPI App
       </a>
 
-      <div id="iosMessage">
+      <!-- iPhone Message -->
+
+      <div id="iosText" class="step-text" style="display:none;">
+
         On iPhone, please open your preferred UPI app manually and paste the copied UPI ID there to pay.
+
       </div>
 
     </div>
@@ -285,7 +282,9 @@
 
         document.getElementById("upiButton").style.display = "none";
 
-        document.getElementById("iosMessage").style.display = "block";
+        document.getElementById("androidText").style.display = "none";
+
+        document.getElementById("iosText").style.display = "block";
 
       }
 
